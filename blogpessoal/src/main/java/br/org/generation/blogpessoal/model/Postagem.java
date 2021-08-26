@@ -12,12 +12,12 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "tb_postagens")
+@Entity // essa classe vai gerar um tabela
+@Table(name = "tb_postagens") //define o nome da tabela 
 public class Postagem {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id //chave primaria
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //auto encrement
 	private long id;
 	
 	@NotNull(message = "O atriuto títuo é obrigatorio")
