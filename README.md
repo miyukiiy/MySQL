@@ -4,7 +4,7 @@
 <p> A Generation é um programa sem fins lucrativos de capacitação e inserção de jovens talentos no mercado de trabalho. <p>
 
 
-<h2> Especificações Técnicas do Bloco 1: </h2>
+<h2> Especificações Técnicas do Bloco 2: </h2>
 <p> ✅ Banco de Dados <p>
 <p> ✅ Spring e Crud<p> 
 <p> ✅ Security <p>
