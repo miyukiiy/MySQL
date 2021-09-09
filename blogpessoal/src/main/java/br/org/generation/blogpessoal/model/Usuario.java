@@ -1,8 +1,10 @@
 package br.org.generation.blogpessoal.model;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +14,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 	@Entity //para jpa entenda que isso é uma tabela e faça o mapeamento
@@ -33,10 +36,36 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 		@NotNull(message = "O atributo Senha é Obrigatória!")
 		@Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
 		private String senha;
+		
+		@Column(name = "data_nascimento")
+		@JsonFormat(pattern = "yyyy-MM-dd")
+		@NotNull(message = "O atributo Data de Nascimento é Obrigatório!")
+		private LocalDate dataNascimento;
 
 		@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 		@JsonIgnoreProperties("usuario")
 		private List<Postagem> postagem;
+		
+		public Usuario(long id, String nome, String usuario, String senha, LocalDate dataNascimento) {
+			
+			this.id = id;
+			this.nome = nome;
+			this.usuario = usuario;
+			this.senha = senha;
+			this.dataNascimento = dataNascimento;
+			
+		}
+		
+		public LocalDate getDataNascimento() {
+			return dataNascimento;
+		}
+
+		public void setDataNascimento(LocalDate dataNascimento) {
+			this.dataNascimento = dataNascimento;
+		}
+
+		public Usuario() { }
+		
 
 		public long getId() {
 			return id;
